@@ -22,9 +22,6 @@ export default function data(state = initialState, action){
     case DELETE_DATA:
     return state.filter(data => data.id !== action.id)
 
-    case SEARCH_DATA:
-    return state.map(data => data.name === action.value || data.phone === action.value ?  Object.assign({}, data, {name: action.name, phone: action.phone}): data)
-
     default:
     return state
 
