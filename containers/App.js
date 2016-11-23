@@ -2,20 +2,29 @@ import React, {Component, PropTypes} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as AppActions from '../actions'
+import ListItem from '../components/ListItem'
+import Navbar from '../components/Navbar'
+import FormAdd from '../components/FormAdd'
 
 class App extends Component {
   render(){
     const {data, actions} = this.props
     return(
+      <div>
+      <Navbar />
       <div className="container">
       <div className="row">
       <div className="well text-center"><h1>Hacktiv8 Phone Book Apps</h1></div>
       </div>
-      // load your components here
+      <FormAdd onSave={actions.addData}/>
+      <ListItem data={data} actions={actions}/>
       </div>
+    </div>
     )
   }
 }
+
+
 
 App.propTypes = {
   data: PropTypes.array.isRequired,
