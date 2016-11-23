@@ -1,8 +1,8 @@
-import {ADD_DATA, DELETE_DATA, UPDATE_DATA} from '../constants/ActionTypes'
+import {ADD_DATA, DELETE_DATA, EDIT_DATA, SEARCH_DATA} from '../constants/ActionTypes'
 
 const initialState = [
   {
-    id: 0,
+    id: 1,
     name: "Ken",
     phone: "081231238912"
   }
@@ -21,6 +21,10 @@ export default function data(state = initialState, action){// action connect ntr
     ]
     case DELETE_DATA:
     return state.filter(data => data.id !== action.id)
+
+    case EDIT_DATA:
+    return state.map(data => data.id === action.id ? Object.assign({}, data, {name: action.name, phone: action.phone}) : data)
+
     default:
     return state
   }
