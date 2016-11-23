@@ -28,6 +28,12 @@ class DataItem extends Component {
         })
     }
 
+    clickDelete() {
+        if (confirm("are you sure want ti delete")) {
+            this.props.deleteData(this.props.data.id)
+        }
+    }
+
     handleSaveEdit(e) {
         e.preventDefault()
         let name = this.state.name.trim()
@@ -55,7 +61,8 @@ class DataItem extends Component {
         else {
             return (
                 <li>{data.name} - {data.phone}
-                    <button type="button" onClick={() => deleteData(data.id)}>Delete</button>
+                    {/*<button type="button" onClick={() => deleteData(data.id)}>Delete</button>*/}
+                    <button type="button" onClick={this.clickDelete.bind(this)}>Delete</button>
                     <button type="button" onClick={this.handleEditClick.bind(this)}>Edit</button>
                 </li>
             )
