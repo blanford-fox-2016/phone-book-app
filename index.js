@@ -7,7 +7,7 @@ import configureStore from './store'
 
 const store = configureStore()
 
-render(
+render (
   <Provider store={store}>
     <App />
   </Provider>,
