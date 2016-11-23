@@ -1,24 +1,24 @@
-var webpack = require('webpack')
-var webpackDevMiddleware = require('webpack-dev-middleware')
-var webpackHotMiddleware = require('webpack-hot-middleware')
-var config = require('./webpack.config')
+const webpack = require('webpack'),
+    webpackDevMiddleware = require('webpack-dev-middleware'),
+    webpackHotMiddleware = require('webpack-hot-middleware'),
+    config = require('./webpack.config'),
 
-var path = require('path');
-var express = require('express')
-var app = express()
-var port = 3000
+    path = require('path'),
+    express = require('express'),
+    app = express(),
+    port = 3000,
 
-var compiler = webpack(config)
+    compiler = webpack(config)
 
-app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: config.output.publicPath}))
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
 app.use(webpackHotMiddleware(compiler))
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 
-app.listen(port, function(error){
-  if(error){
-    console.error(error)
-  }else{
-    console.info("server is running")
-  }
+app.listen(port, function(error) {
+    if (error) {
+        console.log(error)
+    } else {
+        console.info("eak eneh udah jalan di port",port)
+    }
 })

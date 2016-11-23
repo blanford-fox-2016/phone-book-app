@@ -11,3 +11,5 @@ export function editData(id, name, phone){
 export function deleteData(id){
   return {type: types.DELETE_DATA, id}
 }
+
+//daftar method2 sama parameternya
