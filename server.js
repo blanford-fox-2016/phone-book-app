@@ -1,24 +1,25 @@
 var webpack = require('webpack')
 var webpackDevMiddleware = require('webpack-dev-middleware')
 var webpackHotMiddleware = require('webpack-hot-middleware')
-var config = require('./webpack.config')
+var confic = require('./webpack.config')
 
-var path = require('path');
+var path = require('path')
 var express = require('express')
 var app = express()
 var port = 3000
 
-var compiler = webpack(config)
+var compiler = webpack(confic)
 
-app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: config.output.publicPath}))
+app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: confic.output.publicPath}))
 app.use(webpackHotMiddleware(compiler))
 
-app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, 'public')))
 
-app.listen(port, function(error){
-  if(error){
-    console.error(error)
-  }else{
-    console.info("server is running")
-  }
+app.listen(port, function (error) {
+    if (error) {
+        console.log(error)
+    }
+    else {
+        console.info("Server is running")
+    }
 })
