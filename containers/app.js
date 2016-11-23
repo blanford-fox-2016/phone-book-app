@@ -4,15 +4,13 @@ import {connect} from 'react-redux'
 import * as AppActions from '../actions'
 import ListItem from '../components/ListItem'
 import AppTextInput from '../components/AppTextInput'
-import SearchItem from '../components/SearchItem'
 
 class App extends Component{
   render(){
     const {data, actions} = this.props
     return (
       <div>
-        <h1>React Hacktiv8</h1>
-        <SearchItem actions={actions}/>
+        <h1 className="jumbotron">React Hacktiv8</h1>
         <AppTextInput onSave={actions.addData} />
         <ListItem data={data} actions={actions} />
       </div>

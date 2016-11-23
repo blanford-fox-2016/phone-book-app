@@ -11,7 +11,3 @@ export function deleteData(id) {
 export function editData(id, name, phone) {
   return {type: types.EDIT_DATA, id, name, phone}
 }
-
-export function searchData(name, phone) {
-  return {type: types.SEARCH_DATA, name, phone}
-}
