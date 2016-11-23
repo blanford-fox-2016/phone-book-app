@@ -2,8 +2,8 @@ import {ADD_DATA, EDIT_DATA, DELETE_DATA} from '../constants/ActionTypes'
 
 const initialState = [{
   id: 0,
-  name: 'Tivenstain Eimash',
-  phone: '085656222288'
+  name: 'Tivenstain',
+  phone: '08124271818'
 }]
 
 export default function data(state = initialState, action){
@@ -18,13 +18,12 @@ export default function data(state = initialState, action){
     ]
 
     case EDIT_DATA:
-    return []
+    return state.map(data => data.id === action.id ? Object.assign({}, data, {name:action.name, phone: action.phone}): data)
 
     case DELETE_DATA:
     return state.filter((data) => data.id !== action.id)
 
     default:
     return state
-
   }
 }
