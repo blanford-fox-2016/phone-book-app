@@ -12,4 +12,8 @@ export function deleteData(id){
   return {type: types.DELETE_DATA, id}
 }
 
+export function searchData(name, phone){
+  return {type: types.SEARCH_DATA, name, phone}
+}
+
 //daftar method2 sama parameternya
