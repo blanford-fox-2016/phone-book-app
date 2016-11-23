@@ -2,7 +2,7 @@ import {ADD_DATA, DELETE_DATA} from '../constants/ActionTypes'
 
 const initialState = [
     {
-        id: 0,
+        id: 1,
         name: 'Rubi',
         phone: '08112237786'
     }

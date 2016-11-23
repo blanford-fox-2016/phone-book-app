@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as AppActions from '../action'
+import ListItem from '../components/ListItem'
 
 class App extends Component {
     render() {
@@ -11,7 +12,7 @@ class App extends Component {
         return(
             <div>
                 <h1>React Hacktiv8</h1>
-
+                <ListItem data={data} actions=""/>
             </div>
         )
     }

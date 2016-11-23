@@ -1,14 +1,17 @@
 import React, {Component, PropTypes} from 'react'
+import DataItem from './DataItem'
 
-class ListItem extends Component {
+export default class ListItem extends Component {
     constructor(props) {
         super(props)
     }
 
     render() {
-        const {data, actions} = this.props
+        const {data} = this.props
         let dataNodes = data.map(function (item) {
-            // return()
+            return(
+                <DataItem key={data.id} data={item} />
+            )
         })
         return(
             <ul>{dataNodes}</ul>
@@ -17,6 +20,5 @@ class ListItem extends Component {
 }
 
 ListItem.propTypes = {
-    data: propTypes.array.isRequired,
-    actions: propTypes.object.isRequired
+    data: PropTypes.array.isRequired
 }
