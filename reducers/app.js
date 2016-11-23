@@ -1,4 +1,4 @@
-import {ADD_DATA, DELETE_DATA, EDIT_DATA} from '../constants/ActionTypes'
+import {ADD_DATA, DELETE_DATA, EDIT_DATA, SEARCH_DATA} from '../constants/ActionTypes'
 
 const initialState = [
     {
@@ -26,6 +26,11 @@ export default function data(state = initialState, action) {
         case EDIT_DATA:
             return state.map(data => data.id === action.id ? Object.assign({}, data, {name: action.name, phone: action.phone}) : data)
 
+        case SEARCH_DATA:
+            return state.filter((data) => {
+                console.log(action.name)
+                return data.name.startsWith(action.name)
+            })
         default:
             return state
     }

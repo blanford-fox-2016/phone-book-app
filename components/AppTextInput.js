@@ -37,9 +37,13 @@ class AppTextInput extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
-                <input type="text" placeholder="Name" value={this.state.name} onChange={this.handleNameChange.bind(this)} />
-                <input type="text" placeholder="Phone" value={this.state.phone} onChange={this.handlePhoneChange.bind(this)} />
+            <form onSubmit={this.handleSubmit.bind(this)} className="form-inline">
+                <div className="form-group">
+                    <input type="text" placeholder="Name" className="form-control" value={this.state.name} onChange={this.handleNameChange.bind(this)} />
+                </div>
+                <div className="form-group">
+                    <input type="text" placeholder="Phone" className="form-control" value={this.state.phone} onChange={this.handlePhoneChange.bind(this)} />
+                </div>
                 <button type="submit">Save</button>
             </form>
         )

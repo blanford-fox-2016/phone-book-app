@@ -60,11 +60,15 @@ class DataItem extends Component {
         }
         else {
             return (
-                <li>{data.name} - {data.phone}
-                    {/*<button type="button" onClick={() => deleteData(data.id)}>Delete</button>*/}
-                    <button type="button" onClick={this.clickDelete.bind(this)}>Delete</button>
-                    <button type="button" onClick={this.handleEditClick.bind(this)}>Edit</button>
-                </li>
+                <tr>
+                    <td>{data.name}</td>
+                    <td>{data.phone}</td>
+                        {/*<button type="button" onClick={() => deleteData(data.id)}>Delete</button>*/}
+                    <td>
+                        <button type="button" className="btn btn-danger" onClick={this.clickDelete.bind(this)}>Delete</button>
+                        <button type="button" className="btn btn-warning" onClick={this.handleEditClick.bind(this)}>Edit</button>
+                    </td>
+                </tr>
             )
         }
     }
