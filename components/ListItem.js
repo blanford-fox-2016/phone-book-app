@@ -7,10 +7,11 @@ export default class ListItem extends Component {
     }
 
     render() {
-        const {data} = this.props
+        const {data, actions} = this.props
         let dataNodes = data.map(function (item) {
             return(
-                <DataItem key={data.id} data={item} />
+                <DataItem key={item.id} data={item} {...actions} />
+            //    deleteData={actions.deleteData} 3 kali
             )
         })
         return(
@@ -20,5 +21,6 @@ export default class ListItem extends Component {
 }
 
 ListItem.propTypes = {
-    data: PropTypes.array.isRequired
+    data: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
 }
