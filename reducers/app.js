@@ -22,5 +22,8 @@ export default function data(state = initialState, action) {
 
         case DELETE_DATA:
             return state.filter(data => data.id !== action.id)
+
+        default:
+            return state
     }
 }
