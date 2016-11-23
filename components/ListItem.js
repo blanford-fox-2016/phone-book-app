@@ -1,19 +1,25 @@
 import React, {Component, PropTypes} from 'react'
 import DataItem from './DataItem'
-import SearchData from './SearchData'
 
 export default class ListItem extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            search: ''
+            searchName: '',
+            searchPhone: ''
         }
     }
 
-    getSearch(e) {
-        // console.log(e.target.value)
+    getSearchName(e) {
         this.setState({
-            search: e.target.value
+            searchName: e.target.value
+        })
+
+    }
+
+    getSearchPhone(e) {
+        this.setState({
+            searchPhone: e.target.value
         })
 
     }
@@ -23,9 +29,19 @@ export default class ListItem extends Component {
         const {data, actions} = this.props
         let dataFilter = data
 
-        if (this.state.search != '') {
+        if (this.state.searchName) {
             dataFilter = data.filter((data) => {
-                return data.name.startsWith(this.state.search)
+                return data.name.toLowerCase().startsWith(this.state.searchName.toLowerCase())
+            })
+        }
+        if (this.state.searchPhone) {
+            dataFilter = data.filter((data) => {
+                return data.phone.startsWith(this.state.searchPhone)
+            })
+        }
+        if (this.state.searchName != '' && this.state.searchPhone != '') {
+            dataFilter = data.filter((data) => {
+                return (data.name.toLowerCase().startsWith(this.state.searchName.toLowerCase())) && (data.phone.startsWith(this.state.searchPhone))
             })
         }
         let dataNodes = dataFilter.map(function (item) {
@@ -36,7 +52,10 @@ export default class ListItem extends Component {
         })
         return(
             <div>
-                <input type="text" placeholder="Search Name" className="form-control" value={this.state.search} onChange={this.getSearch.bind(this)} />
+                <form className="form-inline">
+                    <input type="text" placeholder="Search Name" className="form-control" value={this.state.searchName} onChange={this.getSearchName.bind(this)} />
+                    <input type="text" placeholder="Search Phone" className="form-control" value={this.state.searchPhone} onChange={this.getSearchPhone.bind(this)} />
+                </form>
                 <table className="table table-bordered">
                     <thead>
                     <tr>
