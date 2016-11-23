@@ -23,9 +23,6 @@ export default function data(state = initialState, action){
     case DELETE_DATA:
     return state.filter((data) => data.id !== action.id)
 
-    case SEARCH_DATA:
-    return state.filter((data) => data.name === action.name && data.phone === action.phone)
-
     default:
     return state
   }
