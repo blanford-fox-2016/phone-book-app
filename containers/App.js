@@ -17,3 +17,21 @@ class App extends Component {
     }
 }
 
+App.propTypes = {
+    data: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
+}
+
+function mapStateToProps(state) {
+    return {data: state.data}
+}
+
+function mapDispatchToProps(dispatch) {
+    return {actions: bindActionCreators(AppActions, dispatch)}
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
+
