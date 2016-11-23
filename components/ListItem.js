@@ -5,7 +5,8 @@ class ListItem extends Component{
 	constructor(props) {
 		super(props);
 		this.state= {
-			searchedName: ''
+			searchedName: '',
+			searchedPhone: ''
 		}
 	}
 	getSearchedName(e){
@@ -13,13 +14,30 @@ class ListItem extends Component{
 			searchedName: e.target.value
 		})
 	}
+	getSearchedPhone(e){
+		this.setState({
+			searchedPhone: e.target.value
+		})
+	}
 	render() {
 		const {data, actions} = this.props
 		let filteredData = data
 
-		if(this.state.searchedName != ''){
+		if(this.state.searchedName != '' && this.state.searchedPhone != ''){
+			filteredData = data.filter((data) => {
+				return data.name.toLowerCase().startsWith(this.state.searchedName.toLowerCase()) && data.phone.startsWith(this.state.searchedPhone)
+			})
+		}
+
+		else if(this.state.searchedName != ''){
 			filteredData = data.filter((data) => {
 				return data.name.toLowerCase().startsWith(this.state.searchedName.toLowerCase())
+			})
+		}
+
+		else if(this.state.searchedPhone != ''){
+			filteredData = data.filter((data) => {
+				return data.phone.startsWith(this.state.searchedPhone)
 			})
 		}
 
@@ -37,7 +55,7 @@ class ListItem extends Component{
 							<input className="form-control" type="text" placeholder="Search Name" value={this.state.searchedName} onChange={this.getSearchedName.bind(this)}/>
 						</div>
 						<div className="col-sm-6">
-							<input className="form-control" type="text" placeholder="Search Phone No" />
+							<input className="form-control" type="text" placeholder="Search Phone No" value={this.state.searchedPhone} onChange={this.getSearchedPhone.bind(this)}/>
 						</div>
 					</form>
 				</div>
