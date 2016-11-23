@@ -1,24 +1,29 @@
-import {ADD_DATA, EDIT_DATA, DELETE_DATA} from '../constants/ActionTypes'
+import {ADD_DATA, DELETE_DATA, EDIT_DATA} from '../constants/ActionTypes'
 
-const initialState = [{
-  id: 0,
-  name: 'Rubi Henjaya',
-  phone: '08112237786'
-}]
+const initialState = [
+  {
+    id: 0,
+    name: 'Juang',
+    phone: '085774369672'
+  }
+]
 
 export default function data(state = initialState, action){
-  switch (action.type) {
+  switch(action.type){
     case ADD_DATA:
-    return []
-
-    case EDIT_DATA:
-    return []
-
+      return [
+        {
+          id: Date.now(),
+          name: action.name,
+          phone: action.phone
+        },
+        ...state // it can spread array and object
+      ]
     case DELETE_DATA:
-    return []
-
+      return state.filter(data => data.id !== action.id)
+    case EDIT_DATA:
+      return state.map(data => data.id === action.id ? Object.assign({}, data, {name: action.name, phone: action.phone}) : data)
     default:
-    return state
-
+      return state
   }
 }
