@@ -11,7 +11,7 @@ class App extends Component{
     const { data, actions } = this.props
     return(
       <div>
-        <h1>React Hacktiv8</h1>
+        <h1>Tutorial react redux nih bro</h1>
         <div className="row">
           <AppTextInput onSave={actions.addData}/>
         </div>

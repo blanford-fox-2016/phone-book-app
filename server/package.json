@@ -16,12 +16,19 @@
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.3.14",
+    "body-parser": "^1.16.0",
     "classnames": "^2.1.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
+    "morgan": "^1.8.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.2.1",
-    "redux": "^3.2.1"
+    "redux": "^3.2.1",
+    "serve-favicon": "^2.3.2",
+    "webpack": "^1.14.0",
+    "webpack-dev-middleware": "^1.10.0",
+    "webpack-hot-middleware": "^2.16.1"
   },
   "devDependencies": {
     "babel-core": "^6.3.15",
